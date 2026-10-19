@@ -1,0 +1,373 @@
+<title>Chiarezza Digitale Recensioni</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&family=Cormorant+Garamond:wght@500;600&display=swap">
+<style>
+/* Layout: sezioni a ritmo alternato scuro/chiaro con angoli larghi; un messaggio per schermata; iPhone grande con le schermate dell'app ricostruite e anonime */
+:root{
+  --ink:#121A22; --ink2:#1B2631; --card:#FFFFFF; --line:#E0DCD2;
+  --text:#121A22; --muted:#5B6672; --accent:#E8703A; --accent-ink:#FFFFFF; --good:#2E9E6B;
+  --bg:#F6F4EF; --dark:#121A22; --dark-text:#F4F1EA; --dark-muted:#A5B0BB; --dark-line:#2C3947;
+  --f-display:'Sora',system-ui,sans-serif; --f-body:'DM Sans',system-ui,sans-serif; --f-serif:'Cormorant Garamond',Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E151B;--card:#17212B;--line:#2A3846;--text:#F2EFE8;--muted:#9DAAB6;--dark:#0A1016;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E151B;--card:#17212B;--line:#2A3846;--text:#F2EFE8;--muted:#9DAAB6;--dark:#0A1016;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.55 var(--f-body);margin:0}
+.wrap{max-width:680px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,7vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.lead{color:var(--muted);margin:0 0 26px;max-width:52ch}
+.tag{font:800 16px/1.2 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
+.dark{background:var(--dark);color:var(--dark-text)}
+.dark .lead{color:var(--dark-muted)}
+section{padding-block:56px}
+.round{border-radius:32px 32px 0 0;margin-top:-28px;position:relative}
+.light{background:var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:15px 24px;font:700 16px var(--f-body);text-decoration:none;cursor:pointer;min-height:52px}
+.btn:focus-visible,.nav button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.src{font-size:12px;color:var(--muted)}
+.dark .src{color:var(--dark-muted)}
+.src a{color:inherit}
+/* hero */
+.hero{padding-block:22px 0;overflow:hidden}
+.brand{font:700 14px var(--f-display);display:flex;align-items:center;gap:8px;margin-bottom:44px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+.badge{display:inline-block;border:1px solid var(--dark-line);border-radius:99px;padding:6px 12px;font-size:13px;color:var(--dark-muted);margin-bottom:18px}
+.hero h1{font-size:clamp(34px,10vw,58px);font-weight:800;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--accent);display:block}
+.hero p.sub{color:var(--dark-muted);font-size:18px;max-width:46ch;margin:18px 0 26px}
+.pains{display:grid;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.pains li{background:var(--ink2);border:1px solid var(--dark-line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.pains .x{width:26px;height:26px;border-radius:50%;background:rgba(232,112,58,.18);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:14px}
+.pains b{display:block;font-family:var(--f-display);font-size:16px;margin-bottom:2px}
+.pains span{color:var(--dark-muted);font-size:15px}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.center .sub{margin-inline:auto}
+.gbp{margin:44px auto -1px;max-width:420px;background:#202124;color:#E8EAED;border-radius:22px 22px 0 0;font-family:Arial,Helvetica,sans-serif;overflow:hidden;border:1px solid #3C4043;border-bottom:0;position:relative;padding:16px 14px 6px;text-align:left}
+.gbp-n{font-size:20px;line-height:1.25;padding-right:120px}
+.gbp-r{font-size:13px;color:#BDC1C6;margin:4px 0 12px}.gbp-r i{font-style:normal;color:#FBBC04}
+.gbp-tabs{display:flex;gap:8px;margin-bottom:12px}
+.gbp-tabs span{background:#303134;border-radius:12px;padding:8px 14px;font-size:14px}
+.gbp-tabs span.on{background:transparent;border:1px solid #E8EAED}
+.gbp-ph{height:150px;border-radius:12px;background:linear-gradient(160deg,#6B6F76,#2E3136 70%);display:grid;place-items:center;font-size:14px;filter:saturate(.4)}
+.gbp-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.gbp-btns span{border:1px solid #5F6368;border-radius:99px;padding:7px 13px;font-size:14px;color:#E8EAED}
+.gbp-row{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;padding:12px 0;border-top:1px solid #3C4043;font-size:14px}
+.gbp-row i{width:34px;height:34px;border-radius:8px;background:#303134;color:#8AB4F8;display:grid;place-items:center;font-style:normal}
+.gbp-row em{font-style:normal;color:#81C995}.gbp-row b{color:#FBBC04;font-weight:400}.gbp-row s{text-decoration:none;color:#5F6368}
+.gbp-flags{position:absolute;top:10px;right:10px;display:grid;gap:6px;justify-items:end}
+.gbp-flags span{background:var(--accent);color:#fff;font:700 12px var(--f-body);padding:4px 10px;border-radius:99px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+/* statistiche ricerca */
+.stats{display:grid;gap:12px;margin:0 0 10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center}
+.stat strong{font:800 clamp(40px,12vw,58px)/1 var(--f-display);color:var(--accent);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{font-size:16px}
+/* finto google */
+.serp{background:#1F1F1F;color:#E3E3E3;border-radius:18px;padding:14px;font-family:Arial,Helvetica,sans-serif;border:1px solid #333}
+.serp .q{display:flex;align-items:center;gap:10px;background:#303134;border-radius:99px;padding:11px 16px;font-size:15px;margin-bottom:12px}
+.serp .q b{font-weight:400;flex:1;min-width:0}
+.serp .g{font:700 18px Arial,sans-serif;letter-spacing:-.5px}
+.serp .h{font-size:17px;margin:4px 2px 10px}
+.serp svg{display:block;width:100%;height:auto;border-radius:12px;margin-bottom:6px}
+.res{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:12px 2px;border-top:1px solid #3C4043;position:relative}
+.res .ph{width:72px;height:72px;border-radius:10px}
+.res .n{font-size:16px;color:#E3E3E3}
+.res .r{font-size:13px;color:#BDC1C6;font-variant-numeric:tabular-nums}
+.res .r i{font-style:normal;color:#FBBC04}
+.res .a{font-size:13px;color:#BDC1C6}
+.res .a em{font-style:normal;color:#81C995}
+.top3{position:absolute;right:2px;top:12px;background:var(--accent);color:#fff;font:700 11px var(--f-body);border-radius:99px;padding:3px 8px}
+.callout{margin-top:22px;border-left:3px solid var(--accent);padding:4px 0 4px 16px}
+.callout b{font-family:var(--f-display);font-size:19px;line-height:1.3;display:block}
+/* recensioni */
+.checks{display:grid;gap:12px;margin:0 0 22px}
+.chk{background:var(--ink2);border:1px solid var(--dark-line);border-radius:18px;padding:18px;display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center}
+.chk .vis{width:64px;height:64px;border-radius:14px;background:rgba(232,112,58,.14);display:grid;place-items:center;color:var(--accent);font:800 17px var(--f-display);text-align:center;line-height:1.1}
+.chk b{font-family:var(--f-display);font-size:18px;display:block;margin-bottom:3px}
+.chk span{color:var(--dark-muted)}
+.chk span strong{color:var(--dark-text)}
+.key{background:var(--accent);color:#fff;border-radius:18px;padding:22px 20px;margin-top:6px}
+.key b{font-family:var(--f-display);font-size:clamp(19px,5.4vw,24px);line-height:1.25;display:block;text-wrap:balance}
+/* difficolta */
+.hard{display:grid;gap:12px;padding:0;margin:0 0 22px;list-style:none}
+.hard li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.hard q{display:block;font-family:var(--f-display);font-size:18px;font-weight:700;margin-bottom:4px;quotes:"\201C" "\201D"}
+.hard span{color:var(--muted)}
+.turn{font-family:var(--f-display);font-size:clamp(20px,5.6vw,26px);font-weight:700;line-height:1.25;margin:0}
+.turn span{color:var(--accent)}
+/* sistema */
+.demo{background:var(--ink2);border:1px solid var(--dark-line);border-radius:24px;padding:20px 16px 24px;display:grid;gap:16px;justify-items:center}
+.demo .iphone{width:min(250px,66vw)}
+.cap{text-align:center;min-height:118px;max-width:36ch}
+.cap .who{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.cap .who.t{background:rgba(232,112,58,.2);color:var(--accent)}
+.cap .who.c{background:rgba(255,255,255,.1);color:var(--dark-text)}
+.cap h3{font-size:22px;margin-bottom:6px}.cap p{color:var(--dark-muted);margin:0}
+.nav{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}
+.nav button{background:transparent;color:var(--dark-text);border:1.5px solid var(--dark-line);border-radius:12px;padding:12px 20px;font:700 15px var(--f-body);cursor:pointer;min-height:48px}
+.nav button.next{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav button:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:7px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--dark-line)}.dots i.on{background:var(--accent);width:22px;border-radius:5px}
+.step-anim{animation:in .35s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.step-anim{animation:none}}
+.honest{border:1.5px dashed var(--dark-line);border-radius:14px;padding:16px;margin-top:34px}
+.honest b{font-family:var(--f-display)}
+.honest ul{margin:8px 0 0;padding-left:18px;color:var(--dark-muted)}
+
+/* iPhone (foto fornita da giulio, schermo sovrapposto) */
+.iphone{width:min(300px,84vw);aspect-ratio:300/612;position:relative;background:url(img/iphone.png) center/100% 100% no-repeat;filter:drop-shadow(0 26px 40px rgba(0,0,0,.4))}
+.bezel{position:absolute;inset:2.1% 4.8% 2.1% 5%}
+.island{position:absolute;top:1.6%;left:50%;transform:translateX(-50%);width:31%;height:3.7%;background:#000;border-radius:99px;z-index:3}
+.scr{width:100%;height:100%;border-radius:12.5%/6%;overflow:hidden;container-type:inline-size;position:relative;background:#0C0C0C}
+
+/* schermate app (unità cqw = % larghezza schermo) */
+.app{position:absolute;inset:0;background:#0C0C0C;color:#EDE6D6;font-family:var(--f-body);font-size:3.9cqw;padding:15cqw 5.5cqw 6cqw;display:flex;flex-direction:column;gap:3.6cqw}
+.app .hd{text-align:center;line-height:1}
+.app .hd small{display:block;font-size:2.6cqw;letter-spacing:.35em;color:#A9A08E}
+.app .hd b{font:500 8.6cqw var(--f-serif);color:#F2EBDD}
+.tabs{display:flex;background:#1A1A1A;border-radius:3cqw;padding:1.2cqw;gap:1cqw}
+.tabs span{flex:1;text-align:center;font-size:3.2cqw;padding:2.2cqw 0;border-radius:2.2cqw;color:#B5AD9C}
+.tabs span.on{background:#F2EBDD;color:#111;font-weight:700}
+.fl{font-size:3cqw;color:#C9C1B0;margin-bottom:-2cqw}
+.in{background:#161616;border:1px solid #2A2A2A;border-radius:2.6cqw;padding:3.2cqw;font-size:3.8cqw;color:#F2EBDD}
+.cb{display:flex;gap:2.4cqw;font-size:3cqw;color:#C9C1B0;align-items:flex-start}
+.cb i{flex:none;width:4.4cqw;height:4.4cqw;border-radius:1cqw;background:#F2EBDD;color:#111;display:grid;place-items:center;font-style:normal;font-size:3cqw;font-weight:800}
+.pb{background:#F2EBDD;color:#111;text-align:center;border-radius:2.6cqw;padding:3.6cqw;font-weight:700;font-size:3.8cqw}
+.ob{border:1px solid #3A3A3A;text-align:center;border-radius:2.6cqw;padding:3.6cqw;font-weight:700;font-size:3.8cqw;color:#F2EBDD}
+.ck{width:17cqw;height:17cqw;border-radius:50%;background:#E9D8A6;color:#111;display:grid;place-items:center;font-size:8cqw;margin:6cqw auto 0}
+.big{font:500 8cqw var(--f-serif);text-align:center;color:#F2EBDD;line-height:1.1}
+.mut{text-align:center;color:#B5AD9C;font-size:3.5cqw;line-height:1.4}
+.logo{width:20cqw;height:20cqw;border:1px solid #6E6658;border-radius:50%;display:grid;place-items:center;margin:2cqw auto 0;font:500 8cqw var(--f-serif);color:#F2EBDD}
+.st{display:flex;justify-content:center;gap:2.6cqw;font-size:8.4cqw;color:#E9D8A6}
+.ta{background:#161616;border:1px solid #6E6658;border-radius:2.6cqw;padding:3.2cqw;min-height:22cqw;font-size:3.5cqw;color:#F2EBDD;line-height:1.4}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw}
+.kp div{background:#161616;border:1px solid #262626;border-radius:2.6cqw;padding:3cqw}
+.kp b{display:block;font:600 6.6cqw var(--f-body);color:#F2EBDD;font-variant-numeric:tabular-nums}
+.kp small{font-size:2.4cqw;letter-spacing:.08em;color:#A9A08E;text-transform:uppercase}
+.sec{font:500 5cqw var(--f-serif);color:#F2EBDD;margin-bottom:-1.4cqw}
+.dist{display:grid;gap:1.6cqw;font-size:2.8cqw;color:#A9A08E}
+.dist div{display:grid;grid-template-columns:7cqw 1fr 5cqw;gap:2cqw;align-items:center;font-variant-numeric:tabular-nums}
+.dist i{height:1.6cqw;background:#262626;border-radius:9px;position:relative;overflow:hidden}
+.dist i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:#E9D8A6;border-radius:9px}
+.dist em{font-style:normal;text-align:right}
+.ex{font-size:2.6cqw;color:#7E776A;text-align:center;margin-top:auto}
+/* sms ios */
+.ios{position:absolute;inset:0;background:#fff;color:#000;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;font-size:3.8cqw}
+.ios .top{background:#F2F2F7;padding:14cqw 4cqw 3cqw;text-align:center;border-bottom:1px solid #DDD}
+.ios .av{width:11cqw;height:11cqw;border-radius:50%;background:#A1A1AA;color:#fff;display:grid;place-items:center;margin:0 auto 1.4cqw;font-weight:600;font-size:5cqw}
+.ios .nm{font-size:3cqw;color:#111}
+.ios .tm{text-align:center;font-size:2.8cqw;color:#8E8E93;margin:4cqw 0 2cqw}
+.ios .bb{background:#E9E9EB;border-radius:5cqw;padding:3cqw 4cqw;margin:0 16cqw 0 3.5cqw;font-size:3.6cqw;line-height:1.35}
+.ios .bb u{color:#0A64D8;text-decoration:none}
+/* pagina recensione google */
+.gr{position:absolute;inset:0;background:#fff;color:#1F1F1F;font-family:Arial,Helvetica,sans-serif;padding:14cqw 5cqw 5cqw;display:flex;flex-direction:column;gap:5cqw;font-size:3.8cqw}
+.gr .tt{font-size:4.4cqw;display:flex;gap:3cqw;align-items:center;white-space:nowrap;overflow:hidden}
+.gr .us{display:flex;gap:3.4cqw;align-items:center}
+.gr .us i{width:10cqw;height:10cqw;border-radius:50%;background:#7E57C2;color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700}
+.gr .us small{display:block;color:#5F6368;font-size:3.1cqw}
+.gr .st2{display:flex;justify-content:center;gap:4cqw;font-size:8cqw;color:#FBBC04}
+.gr .bx{border:1px solid #747775;border-radius:1.4cqw;padding:3.4cqw;min-height:26cqw;line-height:1.4;font-size:3.6cqw}
+.gr .ph2{background:#E8F0FE;color:#0B57D0;border-radius:99px;text-align:center;padding:3.4cqw;font-weight:700}
+.gr .pub{margin-top:auto;background:#0B57D0;color:#fff;border-radius:99px;text-align:center;padding:3.6cqw;font-weight:700}
+/* form */
+.contact{background:var(--card)}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+input{font:16px var(--f-body);padding:14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);width:100%;min-height:52px}
+.note{font-size:12.5px;color:var(--muted)}
+.ok{background:rgba(46,158,107,.12);border:1px solid var(--good);border-radius:12px;padding:18px}
+.err{color:#D2461E;font-size:14px;min-height:20px}
+footer details{max-width:560px;margin:10px auto 0;text-align:left}footer summary{cursor:pointer;text-align:center;text-decoration:underline}footer details p{line-height:1.55;font-size:12px}footer{background:var(--dark);color:var(--dark-muted);font-size:13px;padding:28px 16px calc(28px + env(safe-area-inset-bottom,0px));text-align:center}
+</style>
+
+<header class="dark hero"><div class="wrap">
+  <div class="brand"><i></i>Chiarezza Digitale</div>
+  <div class="center">
+    <div class="badge">Stiamo avviando i primi centri</div>
+    <h1>Ricevi poche chiamate da Google?</h1>
+    <p class="sub">Scopri come Google sceglie quali attività mostrare per prime, e cosa puoi fare perché scelga la tua.</p>
+    <a class="btn" href="#ricerca">Scopri come funziona</a>
+  </div>
+  <div class="gbp" aria-label="Esempio di scheda Google poco attiva, nomi inventati">
+    <div class="gbp-n">Studio Dentistico Dr. Bianchi</div>
+    <div class="gbp-r">4,4 <i>★</i> (7) · Dentista</div>
+    <div class="gbp-tabs"><span class="on">Panoramica</span><span>Recensioni</span><span>Foto</span></div>
+    <div class="gbp-ph"><span>Visualizza tutti</span></div>
+    <div class="gbp-btns"><span>Indicazioni</span><span>Salva</span><span>Condividi</span><span>Chiama</span></div>
+    <div class="gbp-row"><i>◷</i><div><em>Aperto</em> · Chiude alle ore 19</div></div>
+    <div class="gbp-row"><i>⌖</i><div>Via Mazzini, 12</div></div>
+    <div class="gbp-row"><i>★</i><div>4,4 <b>★★★★</b><s>★</s> · 7 Recensioni</div></div>
+    <div class="gbp-flags"><span>Solo 7 recensioni</span><span>L'ultima è di un anno fa</span><span>Una sola foto</span></div>
+  </div>
+</div></header>
+
+<section id="ricerca" class="round light"><div class="wrap">
+  <span class="tag">Cosa fa chi cerca</span>
+  <h2>Prima di chiamarti, ti cercano su Google.</h2>
+  <p class="lead">Un cliente nuovo non ti conosce. Prende il telefono, cerca, guarda le recensioni e sceglie. Tutto in pochi minuti, senza parlare con nessuno.</p>
+  <div class="stats">
+    <div class="stat"><strong>71%</strong><span>usa Google quando cerca un'attività nella sua zona.</span></div>
+    <div class="stat"><strong>97%</strong><span>legge le recensioni prima di scegliere un'attività locale.</span></div>
+  </div>
+  <p class="src">Fonti: <a href="https://www.brightlocal.com/research/consumer-search-behavior-channels/" target="_blank" rel="noopener">BrightLocal 2026, abitudini di ricerca</a> · <a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal 2026, recensioni</a></p>
+</div></section>
+
+<section class="dark round"><div class="wrap">
+  <span class="tag">Cosa vede</span>
+  <h2>Google mette in vetrina solo 3 attività.</h2>
+  <p class="lead">Quando cerchi un servizio vicino a te, Google mostra una mappa e sotto tre schede. È lì che si gioca quasi tutto.</p>
+  <div class="serp" aria-label="Esempio di ricerca su Google">
+    <div class="q"><span class="g">G</span><b>centro estetico vicino a me</b><span>✕</span></div>
+    <div class="h">Attività commerciali</div>
+    <svg viewBox="0 0 360 150" role="img" aria-label="Mappa con le attività">
+      <rect width="360" height="150" fill="#1B2733"/>
+      <path d="M0 60 L360 40 M40 0 L120 150 M200 0 L240 150 M0 120 L360 100 M300 0 L280 150" stroke="#2E3F50" stroke-width="5" fill="none"/>
+      <path d="M0 95 C90 80 160 130 360 70" stroke="#2A5A7A" stroke-width="8" fill="none"/>
+      <g font-family="Arial" font-size="11" fill="#fff">
+        <rect x="150" y="22" width="52" height="20" rx="10" fill="#3C4043"/><circle cx="161" cy="32" r="5" fill="#EA8679"/><text x="170" y="36">4,8</text>
+        <rect x="220" y="52" width="52" height="20" rx="10" fill="#3C4043"/><circle cx="231" cy="62" r="5" fill="#EA8679"/><text x="240" y="66">4,7</text>
+        <rect x="95" y="78" width="52" height="20" rx="10" fill="#3C4043"/><circle cx="106" cy="88" r="5" fill="#EA8679"/><text x="115" y="92">4,3</text>
+        <rect x="260" y="108" width="52" height="20" rx="10" fill="#3C4043"/><circle cx="271" cy="118" r="5" fill="#EA8679"/><text x="280" y="122">4,6</text>
+        <rect x="30" y="30" width="52" height="20" rx="10" fill="#3C4043"/><circle cx="41" cy="40" r="5" fill="#EA8679"/><text x="50" y="44">4,5</text>
+      </g>
+    </svg>
+    <div class="res"><div class="ph" style="background:linear-gradient(135deg,#D9CFC2,#8E7F6E)"></div><div><div class="n">Centro Estetico Iris</div><div class="r">4,8 <i>★★★★★</i> (62) · Centro estetico</div><div class="a">Via Roma, 3 · <em>Aperto</em></div></div><span class="top3">1</span></div>
+    <div class="res"><div class="ph" style="background:linear-gradient(135deg,#E6E0D8,#A79A8A)"></div><div><div class="n">Estetica Luna</div><div class="r">4,3 <i>★★★★☆</i> (23) · Centro benessere</div><div class="a">Via Verdi, 30 · <em>Aperto</em></div></div><span class="top3">2</span></div>
+    <div class="res"><div class="ph" style="background:linear-gradient(135deg,#CFC5BA,#6F6458)"></div><div><div class="n">Beauty Studio Sole</div><div class="r">4,7 <i>★★★★★</i> (89) · Centro estetico</div><div class="a">Via Garibaldi, 16 · <em>Aperto</em></div></div><span class="top3">3</span></div>
+  </div>
+  <p class="src" style="margin-top:8px">Ricerca ricostruita con nomi inventati.</p>
+  <div class="callout"><b>Il 42% di chi cerca un'attività vicino a sé clicca su uno di questi risultati della mappa.</b></div>
+  <p class="src" style="margin-top:8px">Fonte: <a href="https://backlinko.com/google-user-behavior" target="_blank" rel="noopener">Backlinko, studio sul comportamento degli utenti Google</a></p>
+</div></section>
+
+<section class="dark" style="padding-top:8px"><div class="wrap">
+  <span class="tag">Perché contano le recensioni</span>
+  <h2>Tra quelle schede, il cliente sceglie guardando le recensioni.</h2>
+  <p class="lead">Non conosce nessuno dei tre. L'unica cosa che ha per decidere è cosa hanno scritto gli altri clienti. Prima di chiamare controlla tre cose.</p>
+  <div class="checks">
+    <div class="chk"><div class="vis">4,8<br>★</div><div><b>Che siano buone</b><span><strong>Quasi 7 persone su 10</strong> scelgono solo attività con almeno 4 stelle. Sotto, non ti considerano proprio.</span></div></div>
+    <div class="chk"><div class="vis">120</div><div><b>Che siano tante</b><span><strong>Quasi 1 persona su 2</strong> non sceglie un'attività con meno di 20 recensioni. Poche recensioni sembrano poca esperienza.</span></div></div>
+    <div class="chk"><div class="vis">ieri</div><div><b>Che siano recenti</b><span><strong>3 persone su 4</strong> guardano solo le recensioni degli ultimi tre mesi. Una scheda ferma da un anno sembra un'attività ferma.</span></div></div>
+  </div>
+  <p class="src" style="margin-bottom:20px">Fonte: <a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal, Local Consumer Review Survey 2026</a></p>
+  <div class="key"><b>Più recensioni buone e recenti hai, più spesso il cliente nuovo sceglie te.</b></div>
+</div></section>
+
+<section class="round light"><div class="wrap">
+  <span class="tag">Il problema</span>
+  <h2>Ma le recensioni non arrivano da sole.</h2>
+  <p class="lead">I clienti contenti ce li hai. Il problema è che quasi nessuno scrive una recensione se non glielo chiedi, e chiederla è più difficile di quanto sembri.</p>
+  <ul class="hard">
+    <li><q>Mi sembra di elemosinare</q><span>Chiedere una recensione mentre il cliente paga ti fa sentire bisognoso. E non è l'immagine che vuoi dare.</span></li>
+    <li><q>Non è il momento giusto</q><span>Il cliente sta uscendo, ha fretta, c'è qualcuno che aspetta. Chiedere ti mette a disagio, e alla fine lasci perdere.</span></li>
+    <li><q>Certo, te la lascio stasera</q><span>Lo dicono con le migliori intenzioni. Poi arrivano a casa e se ne dimenticano.</span></li>
+    <li><q>A fine giornata non ci penso più</q><span>Tra un cliente, il telefono e la cassa, chiedere le recensioni è l'ultima cosa che ti viene in mente.</span></li>
+  </ul>
+  <p class="turn">Chi è scontento scrive da solo. <span>Chi è contento, se nessuno glielo ricorda, no.</span></p>
+</div></section>
+
+<section class="dark round" id="sistema"><div class="wrap">
+  <span class="tag">Il sistema</span>
+  <h2>Non devi più chiedere tu. Ci pensa il sistema, in automatico.</h2>
+  <p class="lead">Premi Avanti e guarda cosa succede, dal tuo lato e dal lato del cliente. Nomi e numeri sono di esempio.</p>
+  <div class="demo">
+    <div class="cap" id="cap"></div>
+    <div class="nav">
+      <button id="prev" type="button">Indietro</button>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <button id="next" class="next" type="button">Avanti</button>
+    </div>
+    <div class="iphone"><div class="bezel"><div class="island"></div><div class="scr" id="screen"></div></div></div>
+  </div>
+  <div class="honest">
+    <b>Cosa devi sapere, senza giri di parole</b>
+    <ul>
+      <li>Se il tuo gestionale si può collegare, lo colleghiamo: la richiesta parte da sola dopo ogni appuntamento, senza che tu debba pensarci. Altrimenti inserisci nome e telefono, in pochi secondi a cliente.</li>
+      <li>Non ti promettiamo un numero di recensioni o di chiamate. Partiamo dal tuo caso e guardiamo insieme i dati del primo mese.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="contact round" id="contatto"><div class="wrap">
+  <span class="tag">Primi centri</span>
+  <h2>Voglio anche io questo sistema.</h2>
+  <p class="lead">Lasciami nome, attività e città: oltre a ricontattarti, ti preparo una panoramica gratuita della situazione Google nella tua città. Come sei posizionato, chi ti sta davanti e per quali ricerche.</p>
+  <form id="f" novalidate>
+    <label for="nome">Nome
+      <input id="nome" name="nome" type="text" placeholder="Il tuo nome" autocomplete="given-name" required>
+    </label>
+    <label for="attivita">Nome attività
+      <input id="attivita" name="attivita" type="text" placeholder="Es. Studio Rossi" autocomplete="organization" required>
+    </label>
+    <label for="citta">Città
+      <input id="citta" name="citta" type="text" placeholder="Es. Terni" autocomplete="address-level2" required>
+    </label>
+    <label for="tel">Numero di telefono
+      <input id="tel" name="tel" type="tel" inputmode="tel" placeholder="333 1234567" autocomplete="tel" required>
+    </label>
+    <input id="sito" name="sito" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn" type="submit" id="send">Voglio provare questo sistema</button>
+    <div class="note">Usiamo i tuoi dati solo per ricontattarti su questo servizio. <a href="#privacy">Informativa privacy</a></div>
+  </form>
+  <div class="ok" id="ok" hidden><b>Ricevuto, grazie!</b><br>Ti chiamo appena ho pronta la panoramica della tua città.</div>
+</div></section>
+<footer>
+  <div>Giulio Giovannotti · P.IVA 01660090554</div>
+  <details id="privacy"><summary>Informativa privacy</summary>
+  <p>Titolare del trattamento è Giulio Giovannotti (P.IVA 01660090554). I dati che inserisci nel modulo (nome, nome dell’attività, città e telefono) servono solo a ricontattarti e a prepararti la panoramica che hai chiesto. La base giuridica è la tua richiesta (art. 6.1.b GDPR). Non li cediamo a terzi e non li usiamo per altre finalità. Li conserviamo per il tempo necessario a gestire la richiesta e comunque non oltre 12 mesi se non diventi cliente. Sono salvati su servizi di terze parti che usiamo come fornitori tecnici. Puoi chiedere in ogni momento di vederli, correggerli o cancellarli rispondendo al messaggio con cui ti ricontattiamo, e puoi presentare reclamo al Garante per la protezione dei dati personali.</p>
+  </details>
+</footer>
+
+<script>
+// Metti qui l'URL del webhook n8n che riceve il form. Vuoto = modalità prova (non invia nulla).
+var WEBHOOK_URL = "https://giuliog.app.n8n.cloud/webhook/chiarezza-contatto";
+
+var HD = '<div class="hd"><small>STUDIO</small><b>Aria</b></div>';
+function tabs(on){ return '<div class="tabs">'+['Dashboard','Richiedi','Richieste'].map(function(t,k){return '<span class="'+(k===on?'on':'')+'">'+t+'</span>'}).join('')+'</div>'; }
+var SCREENS = {
+  richiedi: '<div class="app">'+HD+tabs(1)+'<div class="fl">Nome e cognome</div><div class="in">Giulia Neri</div><div class="fl">Telefono</div><div class="in">333 123 4567</div><div class="cb"><i>✓</i><span>Invia subito (altrimenti va in coda delle recensioni da inviare)</span></div><div class="pb">Richiedi recensione</div></div>',
+  fatto: '<div class="app">'+HD+tabs(1)+'<div class="ck">✓</div><div class="big">Fatto</div><div class="mut">La richiesta per Giulia Neri parte domani alle 13:42.</div><div class="ob">Aggiungi un altro cliente</div></div>',
+  sms: '<div class="ios"><div class="top"><div class="av">S</div><div class="nm">Studio Aria ›</div></div><div class="tm">Domani 13:42</div><div class="bb">Buongiorno Giulia, sono Laura di Studio Aria. Com’è andata? Bastano 30 secondi: <u>link.esempio.it/k3x9a</u></div></div>',
+  voto: '<div class="app" style="padding-top:14cqw"><div class="logo">SA</div><div class="hd"><small>STUDIO ARIA</small></div><div class="big">Ciao Giulia,<br>com’è andata?</div><div class="mut">Il tuo parere ci aiuta a migliorare. Bastano 30 secondi.</div><div class="st">★★★★★</div><div class="mut" style="margin-top:-2cqw;color:#E9D8A6">Ottimo</div><div class="ta">Trattamento perfetto e ambiente curato, Laura sempre gentilissima. Consigliato!</div><div class="pb">Invia</div></div>',
+  google: '<div class="app" style="padding-top:14cqw"><div class="logo">SA</div><div class="hd"><small>STUDIO ARIA</small></div><div class="big" style="margin-top:8cqw">Ci siamo quasi…</div><div class="mut" style="letter-spacing:.2em;font-size:2.8cqw">TESTO COPIATO</div><div class="mut">Ora incollalo su Google, scegli le stelle e pubblica. Ci aiuti tantissimo.</div><div class="pb" style="margin-top:4cqw">Scrivi su Google</div></div>',
+  review: '<div class="gr"><div class="tt">← Studio Aria · Centro estetico</div><div class="us"><i>G</i><div>Giulia Neri<small>Post pubblico su Google</small></div></div><div class="st2">★★★★★</div><div class="bx">Trattamento perfetto e ambiente curato, Laura sempre gentilissima. Consigliato!</div><div class="ph2">Aggiungi foto</div><div class="pub">Pubblica</div></div>',
+  dashboard: '<div class="app">'+HD+tabs(0)+'<div class="sec">Su Google adesso</div><div class="kp"><div><b>128</b><small>Recensioni</small></div><div><b>4,8</b><small>Punteggio</small></div></div><div class="sec">Richieste di recensione</div><div class="kp"><div><b>48</b><small>Inviate</small></div><div><b>31</b><small>Hanno votato</small></div><div><b>4,6 ★</b><small>Voto medio</small></div><div><b>26</b><small>Click su Google</small></div></div><div class="sec">Come votano</div><div class="dist"><div>5 ★<i style="--w:100%"></i><em>22</em></div><div>4 ★<i style="--w:32%"></i><em>7</em></div><div>3 ★<i style="--w:9%"></i><em>2</em></div><div>2 ★<i style="--w:0%"></i><em>0</em></div><div>1 ★<i style="--w:0%"></i><em>0</em></div></div><div class="ex">Dati di esempio</div></div>'
+};
+document.querySelectorAll('[data-screen]').forEach(function(el){ el.innerHTML = SCREENS[el.dataset.screen]; });
+
+var steps = [
+ {w:"t", t:"1. Arriva il cliente", p:"Se il tuo gestionale si può collegare, il cliente entra da solo e non fai niente. Altrimenti scrivi nome e telefono: pochi secondi.", s:"richiedi"},
+ {w:"t", t:"2. Fatto", p:"La richiesta parte da sola il giorno dopo, nel primo pomeriggio. Oppure subito, se lo scegli.", s:"fatto"},
+ {w:"c", t:"3. Il cliente riceve l’SMS", p:"Il messaggio è personalizzabile e non arriva da un numero sconosciuto: come mittente c\u2019è il nome della tua attività.", s:"sms"},
+ {w:"c", t:"4. Lascia un voto", p:"Una pagina con il tuo logo. Stelle e due righe, in 30 secondi.", s:"voto"},
+ {w:"c", t:"5. Tutto in automatico", p:"Il testo che ha scritto viene copiato da solo e si apre direttamente la pagina delle recensioni Google.", s:"google"},
+ {w:"c", t:"6. Incolla e pubblica", p:"Si apre la pagina delle recensioni Google. Incolla, sceglie le stelle e preme Pubblica.", s:"review"},
+ {w:"t", t:"7. La tua app personale", p:"Vedi l\u2019andamento della tua scheda Google e i miglioramenti: recensioni, voto medio, richieste e chi è andato su Google.", s:"dashboard"}
+];
+var i = 0, $ = function(id){return document.getElementById(id)};
+function render(){
+  var s = steps[i];
+  $("screen").innerHTML = '<div class="step-anim" style="position:absolute;inset:0">'+SCREENS[s.s]+'</div>';
+  $("cap").innerHTML = '<div class="step-anim"><span class="who '+s.w+'">'+(s.w==="t"?"Tu":"Il tuo cliente")+'</span><h3>'+s.t+'</h3><p>'+s.p+'</p></div>';
+  $("dots").innerHTML = steps.map(function(_,k){return '<i class="'+(k===i?'on':'')+'"></i>'}).join('');
+  $("prev").disabled = i===0;
+  $("next").textContent = (i===steps.length-1) ? "Lo voglio provare" : "Avanti";
+}
+$("prev").onclick = function(){ if(i>0){i--;render()} };
+$("next").onclick = function(){ if(i<steps.length-1){i++;render()} else { $("contatto").scrollIntoView({behavior:"smooth"}); } };
+render();
+
+$("f").addEventListener("submit", function(e){
+  e.preventDefault();
+  var d = {sito:$("sito").value, nome:$("nome").value.trim(), attivita:$("attivita").value.trim(), citta:$("citta").value.trim(), tel:$("tel").value.trim()};
+  var digits = d.tel.replace(/\D/g,"");
+  if(!d.attivita || !d.nome || !d.citta || digits.length < 8){ $("err").textContent = "Compila tutti i campi con un numero di telefono valido."; return; }
+  $("err").textContent = ""; $("send").disabled = true;
+  var done = function(){ $("f").hidden = true; $("ok").hidden = false; };
+  if(!WEBHOOK_URL){ done(); return; }
+  fetch(WEBHOOK_URL, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(d)})
+    .then(function(r){ return r.json(); }).then(function(j){ if(!j.ok) throw 0; done(); })
+    .catch(function(){ $("send").disabled = false; $("err").textContent = "Non è partito. Riprova tra un attimo."; });
+});
+</script>
