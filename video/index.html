@@ -85,6 +85,33 @@ p{margin:0}
 .cast img{position:absolute;bottom:18px;height:168px;width:auto;z-index:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.45))}
 .cast .c1{left:6%;height:158px}.cast .c2{left:28%}.cast .c3{left:52%;height:162px}.cast .c4{right:5%;height:166px}
 .cast .tag{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(10,23,28,.7);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+.path{border:0;font:inherit;text-align:left;width:100%;cursor:pointer}
+.btn.cyan{color:var(--cyan);border-color:var(--cyan);background:rgba(95,230,240,.06);box-shadow:0 0 22px rgba(95,230,240,.3), inset 0 0 18px rgba(95,230,240,.1)}
+button.btn{font-family:var(--f-display);cursor:pointer;width:100%}
+dialog.sheet{width:min(560px,100%);max-width:100%;max-height:92dvh;overflow:auto;margin:auto auto 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line);border-bottom:0;border-radius:24px 24px 0 0;background:var(--deep);color:var(--ink);flex-direction:column;gap:14px}
+dialog.sheet[open]{display:flex;animation:up .22s ease-out}
+dialog.sheet::backdrop{background:rgba(3,10,13,.72);backdrop-filter:blur(2px)}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@media (min-width:620px){dialog.sheet{margin:auto;border-radius:24px;border-bottom:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){dialog.sheet[open]{animation:none}}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sheet .x{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--night);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.sheet .x svg{width:18px;height:18px}
+.sheet h2{font-size:clamp(24px,6.4vw,30px)}
+.mini{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:16px}
+.fine{font-size:13px;color:var(--muted);line-height:1.45}
+.sheet .wait{padding:0;border:0;background:none}
+.req{display:flex;flex-direction:column;gap:14px}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:700}
+.fld i{font-style:normal;font-weight:400;color:var(--muted)}
+.fld textarea,.fld input{font:inherit;font-weight:400;font-size:16px;color:var(--ink);background:var(--night);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;resize:vertical;min-width:0}
+.fld textarea:focus,.fld input:focus{border-color:var(--cyan);outline:none}
+.rq-stile{font-size:14px;color:var(--muted)}.rq-stile b{color:var(--ink)}
+.req .consent input{accent-color:var(--cyan)}
+.send{font-family:var(--f-display);font-weight:800;font-size:18px;text-transform:uppercase;color:var(--night);background:var(--cyan);border:0;border-radius:14px;padding:15px 18px;cursor:pointer}
+.send:disabled,.wait-row button:disabled{opacity:.6;cursor:default}
+.done{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:16px;background:rgba(95,230,240,.08);border:1px solid rgba(95,230,240,.4)}
+.done b{font-family:var(--f-display);font-size:20px}
 .choose{font-family:var(--f-display);font-weight:800;font-size:22px;margin-top:6px}
 .paths{display:flex;flex-direction:column;gap:12px}
 .path{display:flex;align-items:center;gap:14px;padding:18px 18px;border-radius:20px;text-decoration:none;color:var(--night);transition:transform .15s ease,box-shadow .15s ease}
@@ -107,6 +134,12 @@ p{margin:0}
 .kit-notes{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:15px}
 .switch{display:flex;flex-direction:column;gap:18px;padding-top:8px;border-top:1px solid var(--line)}
 .switch .lead{max-width:36ch}
+.sheet .canale{margin-top:4px}
+.opt-mail{border-top:1px solid var(--line);padding-top:14px}
+.opt-mail summary{cursor:pointer;text-align:center;font-size:15px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;list-style:none}
+.opt-mail summary::-webkit-details-marker{display:none}
+.opt-mail summary i{font-style:normal;opacity:.8}
+.opt-mail[open] summary{margin-bottom:12px;text-decoration:none}
 .link-alt{display:block;text-align:center;font-size:15px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- character select ---------- */
@@ -327,9 +360,12 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
   </header>
 
   <section class="hero" aria-labelledby="h-hero">
-    <span class="label amber">Lo stile di Sotto Soglia</span>
-    <h1 id="h-hero">Usa questa grafica per i tuoi <em>video.</em></h1>
-    <p class="lead">Puoi farli da solo con il mio kit, oppure li faccio io per te. Scegli la tua strada ed entra in lista.</p>
+    <span class="label amber">Video animati in stile Sotto Soglia</span>
+    <h1 id="h-hero">Cosa vuoi <em>fare?</em></h1>
+    <div class="paths">
+      <button type="button" class="path kitp" data-open="m-kit"><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Imparo a farli con il kit</span><span class="pd">Ti do il metodo, i prompt e i personaggi per creare i tuoi video animati con l'AI. I video li fai tu.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button type="button" class="path vidp" data-open="m-video"><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Mi fai il video su misura</span><span class="pd">Mi dici cosa vendi o cosa vuoi raccontare. Io creo il video animato, pronto da pubblicare.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+    </div>
 
     <div class="cast" role="img" aria-label="I burattini di Sotto Soglia: Johnny, Leo, Rina e Anuel">
       <span class="tag">Sotto Soglia</span>
@@ -337,12 +373,6 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <img class="c2" src="media/pg/leo.webp" alt="">
       <img class="c3" src="media/pg/rina.webp" alt="">
       <img class="c4" src="media/pg/anuel.webp" alt="">
-    </div>
-
-    <p class="choose">Cosa vuoi fare?</p>
-    <div class="paths">
-      <a class="path kitp" href="#kit"><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Il kit</span><span class="pd">Ti do il metodo e gli strumenti. I video li fai tu.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
-      <a class="path vidp" href="#video"><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Il video fatto da me</span><span class="pd">Mi dici cosa vuoi raccontare. Il video lo faccio io.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
     </div>
   </section>
 
@@ -364,17 +394,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <li>Gli account e i crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</li>
       <li>Serve un po' di tempo per imparare. Non è un pulsante magico.</li>
     </ul>
-    <form class="wait" data-fonte="kit" novalidate>
-      <span class="wait-title">Entra in lista per il kit</span>
-      <p class="muted">Quando è pronto ti scrivo per primo. È gratis e non ti impegna a comprare.</p>
-      <label class="sr" for="kit-email">La tua email</label>
-      <div class="wait-row">
-        <input id="kit-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="la-tua@email.it" required>
-        <button type="submit">Avvisami</button>
-      </div>
-      <label class="consent" for="kit-ok"><input id="kit-ok" name="consenso" type="checkbox" required> Voglio ricevere la mail di lancio del kit e le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
-      <p class="wait-msg" aria-live="polite"></p>
-    </form>
+    <button type="button" class="btn" data-open="m-kit">Avvisami quando esce il kit</button>
   </section>
 
   <section class="switch sec" id="video" aria-labelledby="h-svc">
@@ -488,17 +508,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
 
       <div class="chosen">
         <p class="chosen-line" id="chosen" aria-live="polite">Hai scelto <b>Cartoon · Leo</b>.</p>
-        <form class="wait v" data-fonte="video" novalidate>
-          <span class="wait-title">Entra in lista per il tuo video</span>
-          <p class="muted">Lasciami la mail e ti scrivo io per parlare della tua idea. Non ti impegna a comprare.</p>
-          <label class="sr" for="vid-email">La tua email</label>
-          <div class="wait-row">
-            <input id="vid-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="la-tua@email.it" required>
-            <button type="submit">Scrivimi</button>
-          </div>
-          <label class="consent" for="vid-ok"><input id="vid-ok" name="consenso" type="checkbox" required> Voglio essere ricontattato per il mio video e ricevere le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
-          <p class="wait-msg" aria-live="polite"></p>
-        </form>
+        <button type="button" class="btn cyan" data-open="m-video">Richiedi il tuo video</button>
         <a class="link-alt" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener">Hai fretta? Scrivimi in DM</a>
       </div>
     </div>
@@ -614,7 +624,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <h2 id="h-steps">Dalla tua idea al video</h2>
     </div>
     <ol class="steps">
-      <li><h3>Entri in lista o mi scrivi in DM</h3><p>Poi mi racconti chi sei, a chi parli e cosa vuoi raccontare. Bastano due righe.</p></li>
+      <li><h3>Mi mandi la richiesta o mi scrivi in DM</h3><p>Poi mi racconti chi sei, a chi parli e cosa vuoi raccontare. Bastano due righe.</p></li>
       <li><h3>Ti mando una prima idea di script</h3><p>Leggi la storia prima che si animi qualunque cosa.</p></li>
       <li><h3>Disegno, animo e monto</h3><p>Se sei d'accordo, si parte. Personaggi, voce, musica e sottotitoli.</p><span class="pay">Dopo l'acquisto</span></li>
       <li><h3>Ricevi il video</h3><p>Pronto da pubblicare sulla tua pagina.</p></li>
@@ -653,11 +663,11 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
     <div class="faq">
       <details>
         <summary>Quando esce il kit?</summary>
-        <p>Quando è pronto davvero. Chi è in lista riceve la mail per primo.</p>
+        <p>Quando è pronto davvero. Lo annuncio per primo nel canale Instagram del kit (e a chi ha lasciato la mail).</p>
       </details>
       <details>
         <summary>Quanto costa il kit?</summary>
-        <p>Lo trovi nella mail di lancio. Entrare in lista è gratis e non ti obbliga a comprare.</p>
+        <p>Lo annuncio nel canale Instagram del kit il giorno del lancio. Entrare è gratis e non ti obbliga a comprare.</p>
       </details>
       <details>
         <summary>Devo saper programmare?</summary>
@@ -689,11 +699,57 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
   <section class="final" aria-labelledby="h-final">
     <h2 id="h-final">Cosa vuoi fare?</h2>
     <div class="paths">
-      <a class="path kitp" href="#kit"><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Il kit</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></a>
-      <a class="path vidp" href="#video"><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Il video fatto da me</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></a>
+      <button type="button" class="path kitp" data-open="m-kit"><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Imparo a farli con il kit</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button type="button" class="path vidp" data-open="m-video"><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Mi fai il video su misura</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
     </div>
     <a class="link-alt" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener">Oppure scrivimi in DM</a>
   </section>
+
+
+  <dialog class="sheet" id="m-kit" aria-labelledby="mk-t">
+    <div class="sheet-head"><span class="label amber">Voglio farlo da solo</span><button type="button" class="x" data-close aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <h2 id="mk-t">Il kit per creare i tuoi video animati</h2>
+    <p class="muted">Tutto quello che uso io per Sotto Soglia, pronto da usare con Claude.</p>
+    <ul class="mini">
+      <li>Il metodo per scrivere una serie a puntate</li>
+      <li>I prompt e le skill per ganci, script e caption</li>
+      <li>I burattini a pezzi pronti da animare</li>
+      <li>Il motore che va dalla voce al video finito</li>
+    </ul>
+    <p class="fine">È in arrivo. Entra nel canale Instagram del kit: quando è pronto lo annuncio lì per primo. È gratis e non ti impegna a comprare. Account e crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</p>
+    <a class="btn canale" id="kit-canale" href="https://www.instagram.com/channel/fR6PRL8FUE5wMJMb/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Entra nel canale</a>
+    <details class="opt-mail">
+      <summary>Vuoi anche la mail? <i>(facoltativa)</i></summary>
+      <form class="wait" data-fonte="kit" novalidate>
+        <label class="sr" for="kit-email">La tua email</label>
+        <div class="wait-row">
+          <input id="kit-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="la-tua@email.it" required>
+          <button type="submit">Avvisami</button>
+        </div>
+        <label class="consent" for="kit-ok"><input id="kit-ok" name="consenso" type="checkbox" required> Voglio ricevere la mail di lancio del kit e le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
+        <p class="wait-msg" aria-live="polite"></p>
+      </form>
+    </details>
+  </dialog>
+
+  <dialog class="sheet v" id="m-video" aria-labelledby="mv-t">
+    <div class="sheet-head"><span class="label">Voglio che lo faccia tu</span><button type="button" class="x" data-close aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <h2 id="mv-t">Raccontami il tuo video</h2>
+    <p class="muted">Tre risposte veloci. Poi ti scrivo io su Instagram con una prima idea.</p>
+    <form class="req" novalidate>
+      <label class="fld" for="rq-tipo"><span>Che tipo di video vuoi fare?</span>
+        <textarea id="rq-tipo" name="tipo_video" rows="2" maxlength="600" required placeholder="Es. un video che spiega il mio servizio, la presentazione di un prodotto nuovo…"></textarea></label>
+      <label class="fld" for="rq-obj"><span>Qual è il tuo obiettivo? <i>(cosa vendi o cosa vuoi sponsorizzare)</i></span>
+        <textarea id="rq-obj" name="obiettivo" rows="2" maxlength="1000"></textarea></label>
+      <label class="fld" for="rq-ig"><span>Il tuo profilo Instagram <i>(ti contatto lì)</i></span>
+        <input id="rq-ig" name="instagram" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="80" required placeholder="@il_tuo_profilo"></label>
+      <p class="rq-stile" id="rq-stile">Stile scelto: <b>Cartoon · Leo</b></p>
+      <label class="consent" for="rq-ok"><input id="rq-ok" name="consenso" type="checkbox" required> Accetto di essere ricontattato su Instagram per questo video. Uso i dati solo per risponderti.</label>
+      <button type="submit" class="send">Invia richiesta</button>
+      <p class="wait-msg" aria-live="polite"></p>
+    </form>
+    <a class="link-alt" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener">Hai fretta? Scrivimi in DM</a>
+  </dialog>
 
   <footer>Chiarezza Digitale</footer>
 </div>
@@ -771,6 +827,41 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
         .catch(function(){ m.textContent='Qualcosa non ha funzionato. Riprova tra poco o scrivimi in DM.'; })
         .then(function(){ b.disabled=false; });
     });
+  });
+})();
+
+(function(){
+  var URL_REQ='https://giuliog.app.n8n.cloud/webhook/richiesta-video';
+  function openM(id){ var d=document.getElementById(id); if(!d) return;
+    var c=document.getElementById('chosen'), st=document.getElementById('rq-stile');
+    if(id==='m-video' && c && st){ st.innerHTML='Stile scelto: <b>'+(c.querySelector('b')?c.querySelector('b').textContent:'da decidere')+'</b> <span>(lo cambi dal menu dei personaggi)</span>'; }
+    if(typeof d.showModal==='function'){ if(!d.open) d.showModal(); } else d.setAttribute('open','');
+    document.documentElement.style.overflow='hidden';
+    var f=d.querySelector('textarea,input[type=email]'); if(f && window.matchMedia('(pointer:fine)').matches) f.focus();
+  }
+  function closeM(d){ if(typeof d.close==='function') d.close(); else d.removeAttribute('open'); }
+  [].forEach.call(document.querySelectorAll('[data-open]'),function(b){ b.addEventListener('click',function(){ openM(b.getAttribute('data-open')); }); });
+  [].forEach.call(document.querySelectorAll('dialog.sheet'),function(d){
+    d.addEventListener('close',function(){ document.documentElement.style.overflow=''; });
+    d.addEventListener('click',function(e){ if(e.target===d) closeM(d); if(e.target.closest('[data-close]')) closeM(d); });
+  });
+  var h=location.hash; if(h==='#lista-kit') openM('m-kit'); if(h==='#richiedi-video') openM('m-video');
+
+  var f=document.querySelector('form.req'); if(!f) return;
+  var m=f.querySelector('.wait-msg'), b=f.querySelector('.send');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var tipo=f.tipo_video.value.trim(), ig=f.instagram.value.trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/^@/,'').replace(/\/.*$/,'');
+    if(tipo.length<3){ m.textContent='Scrivimi che tipo di video vuoi fare.'; f.tipo_video.focus(); return; }
+    if(!/^[A-Za-z0-9._]{1,30}$/.test(ig)){ m.textContent='Controlla il profilo Instagram: solo lettere, numeri, punti e trattini bassi.'; f.instagram.focus(); return; }
+    if(!f.consenso.checked){ m.textContent='Spunta la casella per poterti ricontattare.'; return; }
+    if(/claude/.test(location.hostname)){ m.textContent='Anteprima: qui il modulo non invia. Funziona sulla pagina pubblicata.'; return; }
+    var c=document.getElementById('chosen'), stile=c&&c.querySelector('b')?c.querySelector('b').textContent:'';
+    b.disabled=true; m.textContent='Invio…';
+    fetch(URL_REQ,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({tipo_video:tipo,obiettivo:f.obiettivo.value.trim(),instagram:ig,stile:stile,consenso:'si'})})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function(){ var d=document.createElement('div'); d.className='done'; d.setAttribute('role','status'); d.innerHTML='<b>Richiesta inviata!</b><span class="muted">Ti scrivo io su Instagram da @digitalechiarezza con una prima idea per il tuo video.</span>'; f.replaceWith(d); })
+      .catch(function(){ m.textContent='Qualcosa non ha funzionato. Riprova tra poco o scrivimi in DM.'; b.disabled=false; });
   });
 })();
 </script>
