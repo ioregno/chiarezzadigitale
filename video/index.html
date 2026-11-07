@@ -358,7 +358,8 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
 }
 body{background:var(--night);background-image:repeating-linear-gradient(rgba(255,255,255,.028) 0 1px,transparent 1px 3px);background-attachment:fixed}
 h1,h2{font-family:var(--f-head);font-weight:400;text-transform:uppercase;letter-spacing:0;line-height:.95}
-h1{font-size:clamp(56px,16vw,76px)}
+h1{font-size:clamp(48px,13.5vw,68px)}
+.hero .choose{font-family:var(--f-display);font-weight:800;font-size:24px;margin-top:4px}
 h2{font-size:clamp(34px,9vw,44px)}
 h1 em,h2 em,.hero h1 em{font-style:normal;color:var(--cyan)}
 .label,.pk,.kind,.who,.list .k,.select-title,.pick,.handle,.steps .pay,.spec,.cast .tag{font-family:var(--f-mono);font-weight:400;letter-spacing:.04em}
@@ -437,8 +438,9 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
 
   <section class="hero" aria-labelledby="h-hero">
     <span class="label">Video animati in stile Sotto Soglia</span>
-    <h1 id="h-hero">Cosa vuoi <em>fare?</em></h1>
-    <p class="proof">800 mila views in 3 puntate · oltre 2.000 commenti</p>
+    <h1 id="h-hero"><em>800 mila views</em> con 3 video animati.</h1>
+    <p class="proof">Oltre 2.000 commenti. Lo stile di Sotto Soglia, per i tuoi contenuti.</p>
+    <p class="choose">Cosa vuoi fare?</p>
     <div class="paths">
       <button type="button" class="path kitp" data-open="m-kit"><span class="pic" aria-hidden="true"><b>?</b><img src="media/pg/leo.webp" alt=""></span><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Imparo a farli con il kit</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <button type="button" class="path vidp" data-open="m-video"><span class="pic" aria-hidden="true"><b>91</b><img src="media/pg/johnny.webp" alt=""></span><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Mi fai il video su misura</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
