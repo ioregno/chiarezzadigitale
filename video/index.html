@@ -822,7 +822,6 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
         <textarea id="rq-obj" name="obiettivo" rows="2" maxlength="1000"></textarea></label>
       <label class="fld" for="rq-ig"><span>Il tuo profilo Instagram <i>(ti contatto lì)</i></span>
         <input id="rq-ig" name="instagram" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="80" required placeholder="@il_tuo_profilo"></label>
-      <p class="rq-stile" id="rq-stile">Stile scelto: <b>Cartoon · Leo</b></p>
       <label class="consent" for="rq-ok"><input id="rq-ok" name="consenso" type="checkbox" required> Accetto di essere ricontattato su Instagram per questo video. Uso i dati solo per risponderti.</label>
       <button type="submit" class="send">Invia richiesta</button>
       <p class="wait-msg" aria-live="polite"></p>
@@ -935,9 +934,8 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
     if(!/^[A-Za-z0-9._]{1,30}$/.test(ig)){ m.textContent='Controlla il profilo Instagram: solo lettere, numeri, punti e trattini bassi.'; f.instagram.focus(); return; }
     if(!f.consenso.checked){ m.textContent='Spunta la casella per poterti ricontattare.'; return; }
     if(/claude/.test(location.hostname)){ m.textContent='Anteprima: qui il modulo non invia. Funziona sulla pagina pubblicata.'; return; }
-    var c=document.getElementById('chosen'), stile=c&&c.querySelector('b')?c.querySelector('b').textContent:'';
     b.disabled=true; m.textContent='Invio…';
-    fetch(URL_REQ,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({tipo_video:tipo,obiettivo:f.obiettivo.value.trim(),instagram:ig,stile:stile,consenso:'si'})})
+    fetch(URL_REQ,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({tipo_video:tipo,obiettivo:f.obiettivo.value.trim(),instagram:ig,consenso:'si'})})
       .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function(){ var d=document.createElement('div'); d.className='done'; d.setAttribute('role','status'); d.innerHTML='<b>Richiesta inviata!</b><span class="muted">Ti scrivo io su Instagram da @digitalechiarezza con una prima idea per il tuo video.</span>'; f.replaceWith(d); })
       .catch(function(){ m.textContent='Qualcosa non ha funzionato. Riprova tra poco o scrivimi in DM.'; b.disabled=false; });
