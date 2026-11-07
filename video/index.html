@@ -134,6 +134,12 @@ dialog.sheet::backdrop{background:rgba(3,10,13,.72);backdrop-filter:blur(2px)}
 .kit-notes{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:15px}
 .switch{display:flex;flex-direction:column;gap:18px;padding-top:8px;border-top:1px solid var(--line)}
 .switch .lead{max-width:36ch}
+.sheet .canale{margin-top:4px}
+.opt-mail{border-top:1px solid var(--line);padding-top:14px}
+.opt-mail summary{cursor:pointer;text-align:center;font-size:15px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;list-style:none}
+.opt-mail summary::-webkit-details-marker{display:none}
+.opt-mail summary i{font-style:normal;opacity:.8}
+.opt-mail[open] summary{margin-bottom:12px;text-decoration:none}
 .link-alt{display:block;text-align:center;font-size:15px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- character select ---------- */
@@ -388,7 +394,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <li>Gli account e i crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</li>
       <li>Serve un po' di tempo per imparare. Non è un pulsante magico.</li>
     </ul>
-    <button type="button" class="btn" data-open="m-kit">Entra in lista per il kit</button>
+    <button type="button" class="btn" data-open="m-kit">Avvisami quando esce il kit</button>
   </section>
 
   <section class="switch sec" id="video" aria-labelledby="h-svc">
@@ -618,7 +624,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <h2 id="h-steps">Dalla tua idea al video</h2>
     </div>
     <ol class="steps">
-      <li><h3>Entri in lista o mi scrivi in DM</h3><p>Poi mi racconti chi sei, a chi parli e cosa vuoi raccontare. Bastano due righe.</p></li>
+      <li><h3>Mi mandi la richiesta o mi scrivi in DM</h3><p>Poi mi racconti chi sei, a chi parli e cosa vuoi raccontare. Bastano due righe.</p></li>
       <li><h3>Ti mando una prima idea di script</h3><p>Leggi la storia prima che si animi qualunque cosa.</p></li>
       <li><h3>Disegno, animo e monto</h3><p>Se sei d'accordo, si parte. Personaggi, voce, musica e sottotitoli.</p><span class="pay">Dopo l'acquisto</span></li>
       <li><h3>Ricevi il video</h3><p>Pronto da pubblicare sulla tua pagina.</p></li>
@@ -657,11 +663,11 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
     <div class="faq">
       <details>
         <summary>Quando esce il kit?</summary>
-        <p>Quando è pronto davvero. Chi è in lista riceve la mail per primo.</p>
+        <p>Quando è pronto davvero. Lo annuncio per primo nel canale Instagram del kit (e a chi ha lasciato la mail).</p>
       </details>
       <details>
         <summary>Quanto costa il kit?</summary>
-        <p>Lo trovi nella mail di lancio. Entrare in lista è gratis e non ti obbliga a comprare.</p>
+        <p>Lo annuncio nel canale Instagram del kit il giorno del lancio. Entrare è gratis e non ti obbliga a comprare.</p>
       </details>
       <details>
         <summary>Devo saper programmare?</summary>
@@ -710,16 +716,20 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <li>I burattini a pezzi pronti da animare</li>
       <li>Il motore che va dalla voce al video finito</li>
     </ul>
-    <p class="fine">È in arrivo. Entra in lista: quando è pronto ti scrivo per primo. È gratis e non ti impegna a comprare. Account e crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</p>
+    <p class="fine">È in arrivo. Entra nel canale Instagram del kit: quando è pronto lo annuncio lì per primo. È gratis e non ti impegna a comprare. Account e crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</p>
+    <a class="btn canale" id="kit-canale" href="https://www.instagram.com/digitalechiarezza/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Entra nel canale</a>
+    <details class="opt-mail">
+      <summary>Vuoi anche la mail? <i>(facoltativa)</i></summary>
       <form class="wait" data-fonte="kit" novalidate>
-            <label class="sr" for="kit-email">La tua email</label>
-      <div class="wait-row">
-        <input id="kit-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="la-tua@email.it" required>
-        <button type="submit">Avvisami</button>
-      </div>
-      <label class="consent" for="kit-ok"><input id="kit-ok" name="consenso" type="checkbox" required> Voglio ricevere la mail di lancio del kit e le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
-      <p class="wait-msg" aria-live="polite"></p>
-    </form>
+        <label class="sr" for="kit-email">La tua email</label>
+        <div class="wait-row">
+          <input id="kit-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="la-tua@email.it" required>
+          <button type="submit">Avvisami</button>
+        </div>
+        <label class="consent" for="kit-ok"><input id="kit-ok" name="consenso" type="checkbox" required> Voglio ricevere la mail di lancio del kit e le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
+        <p class="wait-msg" aria-live="polite"></p>
+      </form>
+    </details>
   </dialog>
 
   <dialog class="sheet v" id="m-video" aria-labelledby="mv-t">
