@@ -424,6 +424,9 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
 .kind{font-size:18px}
 .spec{font-size:17px}
 .fit-box.yes,.fit-box.no{border-color:var(--edge)}
+.or-ig{display:flex;align-items:center;gap:12px;color:var(--muted);font-family:var(--f-mono);font-size:18px}
+.or-ig::before,.or-ig::after{content:"";flex:1;height:1px;background:var(--line)}
+.btn.ig{background:var(--paper2);box-shadow:6px 6px 0 var(--cyan)}
 @media (max-width:380px){ .kitl li{grid-template-columns:1fr} .path .pic{width:60px} }
 </style>
 
@@ -474,7 +477,7 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
       </ul>
     </div>
     <button type="button" class="btn" data-open="m-kit">Avvisami quando esce</button>
-    <p class="cta-note">Il kit è in arrivo. Chi è in lista lo sa per primo, con prezzo e data. È gratis.</p>
+    <p class="cta-note">Il kit è in arrivo. Chi mi scrive KIT lo sa per primo, con prezzo e data. È gratis.</p>
   </section>
 
   <section class="switch sec" id="video" aria-labelledby="h-svc">
@@ -745,11 +748,11 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
     <div class="faq">
       <details>
         <summary>Quando esce il kit?</summary>
-        <p>Quando è pronto davvero. Lo dico prima a chi è in lista, con la data.</p>
+        <p>Quando è pronto davvero. Lo dico prima a chi mi ha scritto KIT, con la data.</p>
       </details>
       <details>
         <summary>Quanto costa il kit?</summary>
-        <p>Il prezzo lo dico a chi è in lista il giorno del lancio. Entrare è gratis e non ti obbliga a comprare.</p>
+        <p>Il prezzo lo dico prima a chi mi ha scritto KIT. Scrivermi è gratis e non ti obbliga a comprare.</p>
       </details>
       <details>
         <summary>Devo saper programmare o disegnare?</summary>
@@ -798,7 +801,10 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
       <li>I burattini a pezzi pronti da animare</li>
       <li>Il motore che va dalla voce al video finito</li>
     </ul>
-    <p class="fine">È in arrivo. Lasciami la mail e ti avviso per primo, con prezzo e data. È gratis e non ti impegna a comprare. Account e crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</p>
+    <p class="fine">È in arrivo. Scrivimi KIT in DM e ti mando l'invito al canale del kit, dove esce per primo con prezzo e data. È gratis e non ti impegna a comprare. Account e crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</p>
+    <a class="btn ig" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Scrivimi KIT in DM</a>
+    <p class="cta-note">Si apre la chat con me su Instagram.</p>
+    <div class="or-ig"><span>oppure via mail</span></div>
     <form class="wait" data-fonte="kit" novalidate>
       <label class="sr" for="kit-email">La tua email</label>
       <div class="wait-row">
@@ -808,7 +814,6 @@ dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)
       <label class="consent" for="kit-ok"><input id="kit-ok" name="consenso" type="checkbox" required> Voglio ricevere la mail di lancio del kit e le novità di Chiarezza Digitale. Posso cancellarmi quando voglio.</label>
       <p class="wait-msg" aria-live="polite"></p>
     </form>
-    <a class="link-alt" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener">Preferisci Instagram? Scrivimi KIT in DM e ti mando l'invito al canale</a>
   </dialog>
 
   <dialog class="sheet v" id="m-video" aria-labelledby="mv-t">
