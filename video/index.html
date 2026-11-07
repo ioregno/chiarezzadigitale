@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Usa questa grafica per i tuoi video">
+<meta property="og:title" content="Video animati in stile Sotto Soglia">
 <meta property="og:description" content="Fallo da solo con il kit, oppure lo faccio io per te. Lo stile di Sotto Soglia.">
 <meta property="og:image" content="media/pg/leo.webp">
 <title>Video animati · Chiarezza Digitale</title>
@@ -11,7 +11,7 @@
 <meta name="description" content="Usa la grafica di Sotto Soglia per i tuoi video: fallo da solo con il kit, oppure lo faccio io per te.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=VT323&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 /* Layout: colonna da telefono (si apre dalla bio). Notte della serie come sfondo, un menu di
    selezione personaggio come eroe, scene disegnate apposta per i casi d'uso, CTA come i pulsanti del finale. */
@@ -348,6 +348,83 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
   .stage img,.card[aria-pressed="true"] .stage img,.stage img.photo,.fig *{animation:none!important}
   .fig .draw{stroke-dashoffset:0}
 }
+/* ===== Stile "telecamera di Fido" + riquadri pieni (7 nov) ===== */
+:root{
+  --night:#0f1512; --deep:#141c18; --panel:#18231e; --line:#2b3b32;
+  --ink:#e8f5ec; --muted:#9bb2a4; --amber:#d6f5e3; --cyan:#5cff9d; --red:#ff5a5a;
+  --edge:#050806; --paper2:#ffffff;
+  --f-head:"Anton","Arial Narrow","Arial Black",sans-serif;
+  --f-mono:"VT323",ui-monospace,Menlo,Consolas,monospace;
+}
+body{background:var(--night);background-image:repeating-linear-gradient(rgba(255,255,255,.028) 0 1px,transparent 1px 3px);background-attachment:fixed}
+h1,h2{font-family:var(--f-head);font-weight:400;text-transform:uppercase;letter-spacing:0;line-height:.95}
+h1{font-size:clamp(48px,13.5vw,68px)}
+.hero .choose{font-family:var(--f-display);font-weight:800;font-size:24px;margin-top:4px}
+h2{font-size:clamp(34px,9vw,44px)}
+h1 em,h2 em,.hero h1 em{font-style:normal;color:var(--cyan)}
+.label,.pk,.kind,.who,.list .k,.select-title,.pick,.handle,.steps .pay,.spec,.cast .tag{font-family:var(--f-mono);font-weight:400;letter-spacing:.04em}
+.label{font-size:20px;color:var(--cyan)}
+.label::before{display:none}
+.label.amber{color:var(--cyan)}
+.label.red{color:var(--red)}
+.handle{font-size:17px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.top{flex-wrap:wrap;row-gap:4px}
+.brand{font-family:var(--f-mono);font-weight:400;font-size:19px;letter-spacing:.04em}
+.brand span{color:var(--cyan)}
+.hero{gap:16px;margin-top:-36px}
+.proof{font-family:var(--f-mono);font-size:21px;color:var(--cyan);margin-top:-6px}
+/* riquadri pieni */
+.path{gap:12px;padding:10px 12px;border:3px solid var(--edge);border-radius:18px;color:#0f1512;box-shadow:6px 6px 0 var(--cyan)}
+.path:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--cyan)}
+.path.kitp{background:var(--amber);box-shadow:6px 6px 0 var(--cyan)}
+.path.vidp{background:var(--paper2);box-shadow:6px 6px 0 var(--cyan)}
+.path .pk{font-size:18px;opacity:.7;letter-spacing:.02em;text-transform:none}
+.path .pt{font-size:21px}
+.path .arr{width:40px;height:40px;border:3px solid var(--edge);background:var(--cyan)}
+.path.kitp .arr,.path.vidp .arr{color:var(--edge)}
+.path .pic{flex:none;width:72px;height:84px;border-radius:10px;border:2.5px solid var(--edge);background:radial-gradient(ellipse at 50% 100%,#2a3a31,#141c18 75%);overflow:hidden;display:flex;justify-content:center;align-items:flex-end;position:relative}
+.path .pic img{height:80px;width:auto;filter:grayscale(1) contrast(1.1)}
+.path .pic b{position:absolute;top:3px;left:3px;font-family:var(--f-mono);font-weight:400;font-size:15px;color:var(--cyan);border:1.5px solid var(--cyan);padding:0 3px;line-height:1.1;z-index:1}
+.final .paths .path{padding:14px 16px}
+.cast{height:170px;border:0;border-radius:0;background:radial-gradient(ellipse at 50% 90%,#2a3a31,#141c18 70%);filter:grayscale(1) contrast(1.1)}
+.cast::after{display:none}
+.cast img{bottom:0;filter:none}
+.cast .c3{left:auto;right:50%;margin-right:-8px;height:150px}.cast .c4{right:auto;left:50%;margin-left:-8px;height:156px}
+.cast .ts{position:absolute;left:10px;right:10px;bottom:6px;z-index:2;display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:17px;color:var(--ink);opacity:.8}
+/* pulsanti */
+.btn,.btn.cyan{font-family:var(--f-display);color:var(--edge);background:var(--cyan);border:3px solid var(--edge);border-radius:16px;box-shadow:6px 6px 0 var(--amber);font-size:20px}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--amber)}
+.send,.wait-row button{color:var(--edge);background:var(--cyan);border:3px solid var(--edge);box-shadow:4px 4px 0 var(--amber)}
+button.link-alt{background:none;border:0;font:inherit;font-size:15px;cursor:pointer;width:100%}
+/* blocchi */
+.card{border:3px solid var(--line);background:var(--deep)}
+.card[aria-pressed="true"]{border-color:var(--edge);background:var(--panel);box-shadow:6px 6px 0 var(--cyan)}
+.stage img{filter:none}
+.lever .knob{background:var(--cyan);box-shadow:none}
+.card[aria-pressed="true"] .lever .knob{background:var(--cyan);box-shadow:none}
+.use{border:3px solid var(--edge);box-shadow:6px 6px 0 var(--line)}
+.who{font-size:18px;color:var(--cyan)}
+.list .k{font-size:18px;color:var(--cyan);text-transform:none;letter-spacing:.02em}
+.kitl li{grid-template-columns:150px 1fr}
+.honest{display:flex;flex-direction:column;gap:10px;padding:16px 18px;border:2px dashed var(--red);border-radius:16px}
+.steps li::before{font-family:var(--f-mono);font-weight:400;font-size:22px;color:var(--edge);background:var(--cyan);border:2.5px solid var(--edge);border-radius:8px}
+.steps .pay{font-size:16px;color:var(--cyan);border-color:var(--cyan)}
+.fit-box{border:3px solid var(--edge);box-shadow:6px 6px 0 var(--line)}
+.fit-box.yes{box-shadow:6px 6px 0 var(--cyan)}
+.fit-box.no{box-shadow:6px 6px 0 var(--red)}
+.faq summary::after{font-family:var(--f-mono);font-size:26px}
+.final{background:var(--deep);border:3px solid var(--edge);box-shadow:6px 6px 0 var(--cyan)}
+.dots span.on{background:var(--cyan)}
+.wait-msg{color:var(--cyan)}
+.consent input{accent-color:var(--cyan)}
+dialog.sheet{border:3px solid var(--edge);border-bottom:0;background:var(--deep)}
+.fld textarea:focus,.fld input:focus,.wait-row input:focus{border-color:var(--cyan)}
+.done{background:rgba(92,255,157,.08);border-color:rgba(92,255,157,.45)}
+.select-title{font-size:20px;color:var(--cyan)}
+.kind{font-size:18px}
+.spec{font-size:17px}
+.fit-box.yes,.fit-box.no{border-color:var(--edge)}
+@media (max-width:380px){ .kitl li{grid-template-columns:1fr} .path .pic{width:60px} }
 </style>
 
 </head>
@@ -360,47 +437,52 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
   </header>
 
   <section class="hero" aria-labelledby="h-hero">
-    <span class="label amber">Video animati in stile Sotto Soglia</span>
-    <h1 id="h-hero">Cosa vuoi <em>fare?</em></h1>
+    <span class="label">Video animati in stile Sotto Soglia</span>
+    <h1 id="h-hero"><em>800 mila views</em> con 3 video animati.</h1>
+    <p class="proof">Oltre 2.000 commenti. Lo stile di Sotto Soglia, per i tuoi contenuti.</p>
+    <p class="choose">Cosa vuoi fare?</p>
     <div class="paths">
-      <button type="button" class="path kitp" data-open="m-kit"><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Imparo a farli con il kit</span><span class="pd">Ti do il metodo, i prompt e i personaggi per creare i tuoi video animati con l'AI. I video li fai tu.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
-      <button type="button" class="path vidp" data-open="m-video"><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Mi fai il video su misura</span><span class="pd">Mi dici cosa vendi o cosa vuoi raccontare. Io creo il video animato, pronto da pubblicare.</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button type="button" class="path kitp" data-open="m-kit"><span class="pic" aria-hidden="true"><b>?</b><img src="media/pg/leo.webp" alt=""></span><span class="ptxt"><span class="pk">Voglio farlo da solo</span><span class="pt">Imparo a farli con il kit</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button type="button" class="path vidp" data-open="m-video"><span class="pic" aria-hidden="true"><b>91</b><img src="media/pg/johnny.webp" alt=""></span><span class="ptxt"><span class="pk">Voglio che lo faccia tu</span><span class="pt">Mi fai il video su misura</span></span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
     </div>
-
-    <div class="cast" role="img" aria-label="I burattini di Sotto Soglia: Johnny, Leo, Rina e Anuel">
-      <span class="tag">Sotto Soglia</span>
-      <img class="c1" src="media/pg/johnny.webp" alt="">
-      <img class="c2" src="media/pg/leo.webp" alt="">
+    <div class="cast" role="img" aria-label="I burattini di Sotto Soglia: Rina e Anuel">
       <img class="c3" src="media/pg/rina.webp" alt="">
       <img class="c4" src="media/pg/anuel.webp" alt="">
+      <span class="ts"><span>Sotto Soglia</span><span>23:01:14</span></span>
     </div>
   </section>
 
   <section class="sec" id="kit" aria-labelledby="h-kit">
     <div class="sec-head">
-      <span class="label amber">Voglio farlo da solo</span>
-      <h2 id="h-kit">Il kit per creare la tua serie</h2>
-      <p class="muted">Tutto quello che uso io per Sotto Soglia, pronto da usare con Claude.</p>
+      <span class="label">Voglio farlo da solo</span>
+      <h2 id="h-kit">La tua serie animata, anche se non sai <em>disegnare.</em></h2>
+      <p class="muted">Nel kit c'è tutto quello che uso per Sotto Soglia. Lo apri con Claude e ti guida passo passo, dall'idea al video finito.</p>
     </div>
-    <ul class="list">
-      <li><span class="k">Il metodo</span><span class="v">Come scrivere una serie a puntate dove decide il pubblico, con i modelli di script e di scaletta.</span></li>
-      <li><span class="k">I prompt</span><span class="v">Il prompt di avvio per Claude e le skill per ganci, script e caption.</span></li>
-      <li><span class="k">I personaggi</span><span class="v">Burattini a pezzi pronti da animare, sfondi di esempio e capigliature.</span></li>
-      <li><span class="k">Il motore</span><span class="v">Dalla voce al video finito, con una demo che funziona dal primo giorno.</span></li>
-      <li><span class="k">Le lezioni</span><span class="v">Cosa ha funzionato e cosa no nelle puntate di Sotto Soglia.</span></li>
+    <ul class="list kitl">
+      <li><span class="k">Sai cosa scrivere</span><span class="v">Il metodo per una serie a puntate dove decide il pubblico, con i modelli di script e di scaletta.</span></li>
+      <li><span class="k">Niente foglio bianco</span><span class="v">Il prompt di avvio e le skill per ganci, script e caption.</span></li>
+      <li><span class="k">Non devi disegnare</span><span class="v">Burattini a pezzi pronti da animare, sfondi e capigliature.</span></li>
+      <li><span class="k">Non monti a mano</span><span class="v">Il motore va dalla voce al video finito, con una demo che funziona dal primo giorno.</span></li>
+      <li><span class="k">Eviti i miei errori</span><span class="v">Cosa ha funzionato e cosa no nelle puntate di Sotto Soglia.</span></li>
       <li><span class="k">Installazione</span><span class="v">Guidata, per Windows e Mac.</span></li>
     </ul>
-    <ul class="kit-notes">
-      <li>Gli account e i crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</li>
-      <li>Serve un po' di tempo per imparare. Non è un pulsante magico.</li>
-    </ul>
-    <button type="button" class="btn" data-open="m-kit">Avvisami quando esce il kit</button>
+    <div class="honest">
+      <span class="label red">Prima di entrare, due cose oneste</span>
+      <ul class="kit-notes">
+        <li>Non è un pulsante magico. Le prime volte ci metti qualche ora.</li>
+        <li>Gli account e i crediti degli strumenti (Claude, Gemini, ElevenLabs) sono a carico tuo.</li>
+      </ul>
+    </div>
+    <a class="btn" href="https://www.instagram.com/channel/fR6PRL8FUE5wMJMb/" target="_blank" rel="noopener">Entra nel canale del kit</a>
+    <p class="cta-note">Il kit è in arrivo. Lo annuncio prima nel canale, con prezzo e data. Entrare è gratis.</p>
+    <button type="button" class="link-alt" data-open="m-kit">Preferisci la mail? Lasciala qui</button>
   </section>
 
   <section class="switch sec" id="video" aria-labelledby="h-svc">
     <span class="label">Voglio che lo faccia tu</span>
-    <h2 id="h-svc">Il tuo video, <em style="font-style:normal;color:var(--cyan)">fatto da me.</em></h2>
-    <p class="lead">Mi racconti cosa vuoi dire. Io lo trasformo in un video animato per la tua pagina, con personaggi, voce, musica e sottotitoli.</p>
+    <h2 id="h-svc">La tua idea, raccontata da un <em>burattino.</em></h2>
+    <p class="lead">Sei un creator o un personal brand e hai qualcosa da spiegare: un'idea, un servizio, un corso. Io lo trasformo in una storia animata con un protagonista. Tu la pubblichi.</p>
+    <p class="muted">Una storia con un personaggio si capisce prima e si ricorda di più di una spiegazione a voce. E non devi metterci la faccia ogni volta.</p>
 
     <div class="select" aria-labelledby="sel-title">
       <div class="select-head">
@@ -509,6 +591,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <div class="chosen">
         <p class="chosen-line" id="chosen" aria-live="polite">Hai scelto <b>Cartoon · Leo</b>.</p>
         <button type="button" class="btn cyan" data-open="m-video">Richiedi il tuo video</button>
+        <p class="cta-note">Prima di pagare leggi la prima idea di script. Se non ti convince, finisce lì.</p>
         <a class="link-alt" href="https://ig.me/m/digitalechiarezza" target="_blank" rel="noopener">Hai fretta? Scrivimi in DM</a>
       </div>
     </div>
@@ -539,9 +622,9 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
           <img src="media/pg/sara.webp" alt="" style="left:9%" loading="lazy" width="194" height="560">
         </div>
         <div class="use-body">
-          <span class="who">Creator e personal brand</span>
-          <h3>Spieghi la tua idea o il tuo servizio</h3>
-          <p>Quello che insegni diventa una storia con un protagonista. Si capisce prima e si ricorda di più.</p>
+          <span class="who">Creator</span>
+          <h3>Un concetto del tuo lavoro</h3>
+          <p>Quello che insegni diventa una scena con un protagonista che sbaglia, capisce e cambia.</p>
         </div>
       </article>
 
@@ -567,9 +650,9 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
           <img src="media/pg/johnny.webp" alt="" style="left:6%" loading="lazy" width="235" height="560">
         </div>
         <div class="use-body">
-          <span class="who">Aziende</span>
-          <h3>Presenti un prodotto nuovo</h3>
-          <p>Un personaggio scopre il prodotto, lo prova e fa vedere a cosa serve. Senza sembrare una pubblicità.</p>
+          <span class="who">Corso o servizio</span>
+          <h3>Il tuo corso o il tuo servizio</h3>
+          <p>Il tuo cliente tipo entra nella storia con il suo problema e lo risolve con te.</p>
         </div>
       </article>
 
@@ -593,9 +676,9 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
           <img src="media/pg/nonno.webp" alt="" style="left:7%" loading="lazy" width="200" height="560">
         </div>
         <div class="use-body">
-          <span class="who">Aziende e attività</span>
-          <h3>Spieghi un servizio o ti fai conoscere</h3>
-          <p>Il cliente tipo entra nella storia, ha il suo problema e lo risolve da te. Chi guarda si ritrova nei suoi panni.</p>
+          <span class="who">Personal brand</span>
+          <h3>La tua storia</h3>
+          <p>Come hai iniziato, l'errore che ti ha cambiato, il cliente che ricordi. Raccontata da un burattino che ti somiglia.</p>
         </div>
       </article>
 
@@ -624,10 +707,10 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <h2 id="h-steps">Dalla tua idea al video</h2>
     </div>
     <ol class="steps">
-      <li><h3>Mi mandi la richiesta o mi scrivi in DM</h3><p>Poi mi racconti chi sei, a chi parli e cosa vuoi raccontare. Bastano due righe.</p></li>
-      <li><h3>Ti mando una prima idea di script</h3><p>Leggi la storia prima che si animi qualunque cosa.</p></li>
+      <li><h3>Mi mandi la richiesta</h3><p>Tre risposte veloci, oppure mi scrivi in DM.</p></li>
+      <li><h3>Ti mando una prima idea di script</h3><p>La leggi prima che si animi qualunque cosa. Insieme ti dico prezzo e tempi.</p></li>
       <li><h3>Disegno, animo e monto</h3><p>Se sei d'accordo, si parte. Personaggi, voce, musica e sottotitoli.</p><span class="pay">Dopo l'acquisto</span></li>
-      <li><h3>Ricevi il video</h3><p>Pronto da pubblicare sulla tua pagina.</p></li>
+      <li><h3>Ricevi il video</h3><p>Pronto da pubblicare.</p></li>
     </ol>
   </section>
 
@@ -640,8 +723,8 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       <div class="fit-box yes">
         <span class="label">Sì, se</span>
         <ul>
-          <li>Sei un creator o un personal brand e vuoi spiegare un'idea o un servizio.</li>
-          <li>Hai un'azienda e vuoi presentare un prodotto o farti conoscere.</li>
+          <li>Sei un creator o un personal brand e vuoi spiegare un'idea, un servizio o un corso.</li>
+          <li>Vuoi un contenuto che si distingue dai soliti video parlati.</li>
           <li>Non vuoi metterci sempre la faccia.</li>
         </ul>
       </div>
@@ -663,23 +746,23 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
     <div class="faq">
       <details>
         <summary>Quando esce il kit?</summary>
-        <p>Quando è pronto davvero. Lo annuncio per primo nel canale Instagram del kit (e a chi ha lasciato la mail).</p>
+        <p>Quando è pronto davvero. Lo annuncio prima nel canale Instagram del kit, con la data.</p>
       </details>
       <details>
         <summary>Quanto costa il kit?</summary>
-        <p>Lo annuncio nel canale Instagram del kit il giorno del lancio. Entrare è gratis e non ti obbliga a comprare.</p>
+        <p>Il prezzo lo dico nel canale il giorno del lancio. Entrare è gratis e non ti obbliga a comprare.</p>
       </details>
       <details>
-        <summary>Devo saper programmare?</summary>
-        <p>No. Il codice lo gestisce Claude seguendo il metodo del kit. Serve un po' di pazienza e voglia di provare.</p>
+        <summary>Devo saper programmare o disegnare?</summary>
+        <p>No. Il codice lo gestisce Claude seguendo il metodo, i personaggi sono già pronti. Serve un po' di pazienza.</p>
       </details>
       <details>
         <summary>Quanto costa un video fatto da te?</summary>
-        <p>Dipende da quanto dura il video e da quanti personaggi servono. Scrivimi cosa hai in mente e ti dico il prezzo prima di iniziare.</p>
+        <p>Dipende da quanto dura e da quanti personaggi servono. Ti dico il prezzo insieme alla prima idea di script, prima di iniziare.</p>
       </details>
       <details>
-        <summary>Quanto ci metti a fare un video?</summary>
-        <p>Dipende dalla durata e dalle scene. Te lo dico insieme al prezzo, prima di partire.</p>
+        <summary>Quanto ci metti?</summary>
+        <p>Dipende dalla durata e dalle scene. Te lo dico insieme al prezzo.</p>
       </details>
       <details>
         <summary>Posso avere un personaggio che mi somiglia?</summary>
@@ -687,7 +770,7 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
       </details>
       <details>
         <summary>Posso usare la mia voce?</summary>
-        <p>Sì. Registri tu con il telefono e io monto tutto, oppure scegliamo insieme una voce su ElevenLabs.</p>
+        <p>Sì. Registri con il telefono e io monto tutto, oppure scegliamo insieme una voce.</p>
       </details>
       <details>
         <summary>Mi garantisci le visualizzazioni?</summary>
